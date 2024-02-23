@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+
+window.onload = function(){
+	//alert("hi");
+	notShowPop =getCookieValue();
+	console.log(notShowPop);
+	if(notShowPop != "true"){
+		window.open("popUp2.html","pop","width=400,height=500,history=no,resizable=no,status=no,scrollbars=yes,menubar=no");
+	}
+	
+	
+}
+
+
+  // 쿠키 읽어오는 함수
+
+  function getCookieValue(){   
+
+	var result="false";
+	//console.log(result);
+   // 쿠키 여부 확인
+   console.log("현재 쿠키",document.cookie);
+   console.log("쿠키 길이",document.cookie.length);
+   
+   var cookie =document.cookie
+    if(document.cookie != ""){
+		for(var i=0; i<cookie.length;i++){
+
+			element=cookie[i].split("=");
+			value=element[0];	
+			value=value.replace(/^\s*/,'');   // 자바스크립트 정규 표현식 첫 글자가 공백 s(space)이 있으면 제거
+			if(value=="notShowPop"){
+				result= element[1];
+			}
+		}
+ 	}
+
+
+		return result;
+  }
+</script>
+
+</head>
+<body>
+팝업창 나와라
+</body>
+</html>
